@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Class timetable | Fitness Extreme Gym</title>
+    <meta name="description"
+        content="Weekly class timetable at Groundwork Gym. Filter by beginner-friendly, strength, cardio and mobility classes.">
+    <link rel="icon" href="assets/images/favicon.svg" type="image/svg+xml">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Archivo:wght,wght@62..125,400..900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="js/script.js" defer></script>
+</head>
+
+<body>
+    <a class="skip-link" href="#main">Skip to main content</a>
+
+    <header class="site-header">
+        <a class="logo" href="index.html">
+            <span class="logo-mark" aria-hidden="true">EF</span>Extreme Fitness
+        </a>
+        <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="main-nav" hidden>Menu</button>
+        <nav class="main-nav" id="main-nav" aria-label="Main">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="classes.html" aria-current="page">Classes</a></li>
+                <li><a href="membership.html">Membership</a></li>
+                <li><a href="join.html">Book a free trial</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main id="main">
+    <h1>Class timetable</h1>
+    <p>Every class is capped at 10 people and led by a coach. New to training? Look for <strong>Beginner-friendly</strong> classes, or <a href="join.html">book a free trial</a> and your coach will suggest where to start.</p>
+
+    
+    <div class="filter" id="class-filter" hidden>
+      <p id="filter-label">Show:</p>
+      <div class="filter-buttons" role="group" aria-labelledby="filter-label">
+        <button type="button" data-filter="all" aria-pressed="true">All classes</button>
+        <button type="button" data-filter="beginner" aria-pressed="false">Beginner-friendly</button>
+        <button type="button" data-filter="strength" aria-pressed="false">Strength</button>
+        <button type="button" data-filter="cardio" aria-pressed="false">Cardio</button>
+        <button type="button" data-filter="mobility" aria-pressed="false">Mobility</button>
+      </div>
+      <p id="filter-status" aria-live="polite"></p>
+    </div>
+
+    <div class="timetable">
+      <section class="day" aria-labelledby="monday">
+        <h2 id="monday">Monday</h2>
+        <ul class="class-list">
+          <li class="class-card" data-tags="cardio">
+            <h3>Morning Conditioning</h3>
+            <p class="class-meta"><time datetime="06:30">6:30am</time> · <time datetime="PT30M">30 min</time> · Coach Priya</p>
+            <p class="class-level">Level: Some experience</p>
+            <p>A fast-paced mix of bike, rower and bodyweight moves to start the day.</p>
+          </li>
+          <li class="class-card" data-tags="strength beginner">
+            <h3>Intro to Lifting</h3>
+            <p class="class-meta"><time datetime="18:00">6:00pm</time> · <time datetime="PT45M">45 min</time> · Coach Sam</p>
+            <p class="class-level">Level: Beginner-friendly</p>
+            <p>Learn the squat, deadlift and overhead press with light weights and plenty of coaching.</p>
+          </li>
+          <li class="class-card" data-tags="mobility beginner">
+            <h3>Mobility and Stretch</h3>
+            <p class="class-meta"><time datetime="19:00">7:00pm</time> · <time datetime="PT30M">30 min</time> · Coach Aroha</p>
+            <p class="class-level">Level: All levels</p>
+            <p>Slow, guided stretching to ease stiff hips, shoulders and backs.</p>
+          </li>
+        </ul>
+      </section>
+
+      <section class="day" aria-labelledby="tuesday">
+        <h2 id="tuesday">Tuesday</h2>
+        <ul class="class-list">
+          <li class="class-card" data-tags="mobility beginner">
+            <h3>Mobility and Stretch</h3>
+            <p class="class-meta"><time datetime="12:15">12:15pm</time> · <time datetime="PT30M">30 min</time> · Coach Aroha</p>
+            <p class="class-level">Level: All levels</p>
+            <p>Slow, guided stretching to ease stiff hips, shoulders and backs.</p>
+          </li>
+          <li class="class-card" data-tags="strength beginner">
+            <h3>Strength Foundations</h3>
+            <p class="class-meta"><time datetime="18:00">6:00pm</time> · <time datetime="PT60M">60 min</time> · Coach Sam</p>
+            <p class="class-level">Level: Beginner-friendly</p>
+            <p>A full-body strength session that builds on the basics from Intro to Lifting.</p>
+          </li>
+        </ul>
+      </section>
+
+      <section class="day" aria-labelledby="wednesday">
+        <h2 id="wednesday">Wednesday</h2>
+        <ul class="class-list">
+          <li class="class-card" data-tags="cardio beginner">
+            <h3>Circuit Cardio</h3>
+            <p class="class-meta"><time datetime="06:30">6:30am</time> · <time datetime="PT45M">45 min</time> · Coach Priya</p>
+            <p class="class-level">Level: All levels</p>
+            <p>Timed stations you can work through at your own pace. Every move has an easier option.</p>
+          </li>
+          <li class="class-card" data-tags="strength beginner">
+            <h3>Kettlebell Basics</h3>
+            <p class="class-meta"><time datetime="17:30">5:30pm</time> · <time datetime="PT45M">45 min</time> · Coach Ben</p>
+            <p class="class-level">Level: Beginner-friendly</p>
+            <p>Learn to swing, carry and lift a kettlebell safely.</p>
+          </li>
+        </ul>
+      </section>
+
+      <section class="day" aria-labelledby="thursday">
+        <h2 id="thursday">Thursday</h2>
+        <ul class="class-list">
+          <li class="class-card" data-tags="strength">
+            <h3>Lunchtime Lift</h3>
+            <p class="class-meta"><time datetime="12:15">12:15pm</time> · <time datetime="PT45M">45 min</time> · Coach Sam</p>
+            <p class="class-level">Level: Some experience</p>
+            <p>A quick barbell session for people who already know the main lifts.</p>
+          </li>
+          <li class="class-card" data-tags="mobility beginner">
+            <h3>Mobility and Stretch</h3>
+            <p class="class-meta"><time datetime="19:00">7:00pm</time> · <time datetime="PT30M">30 min</time> · Coach Aroha</p>
+            <p class="class-level">Level: All levels</p>
+            <p>Slow, guided stretching to ease stiff hips, shoulders and backs.</p>
+          </li>
+        </ul>
+      </section>
+
+      <section class="day" aria-labelledby="friday">
+        <h2 id="friday">Friday</h2>
+        <ul class="class-list">
+          <li class="class-card" data-tags="cardio beginner">
+            <h3>Circuit Cardio</h3>
+            <p class="class-meta"><time datetime="06:30">6:30am</time> · <time datetime="PT45M">45 min</time> · Coach Priya</p>
+            <p class="class-level">Level: All levels</p>
+            <p>Timed stations you can work through at your own pace. Every move has an easier option.</p>
+          </li>
+          <li class="class-card" data-tags="strength">
+            <h3>Strength Club</h3>
+            <p class="class-meta"><time datetime="17:30">5:30pm</time> · <time datetime="PT60M">60 min</time> · Coach Ben</p>
+            <p class="class-level">Level: Some experience</p>
+            <p>Work towards personal bests on the main lifts, with a coach checking your form.</p>
+          </li>
+        </ul>
+      </section>
+
+      <section class="day" aria-labelledby="saturday">
+        <h2 id="saturday">Saturday</h2>
+        <ul class="class-list">
+          <li class="class-card" data-tags="strength beginner">
+            <h3>Intro to Lifting</h3>
+            <p class="class-meta"><time datetime="09:00">9:00am</time> · <time datetime="PT45M">45 min</time> · Coach Sam</p>
+            <p class="class-level">Level: Beginner-friendly</p>
+            <p>Learn the squat, deadlift and overhead press with light weights and plenty of coaching.</p>
+          </li>
+          <li class="class-card" data-tags="cardio">
+            <h3>Rowing Intervals</h3>
+            <p class="class-meta"><time datetime="10:30">10:30am</time> · <time datetime="PT30M">30 min</time> · Coach Priya</p>
+            <p class="class-level">Level: Some experience</p>
+            <p>Short, hard efforts on the rowing machine with rest in between.</p>
+          </li>
+        </ul>
+      </section>
+
+      <section class="day" aria-labelledby="sunday">
+        <h2 id="sunday">Sunday</h2>
+        <ul class="class-list">
+          <li class="class-card" data-tags="mobility beginner">
+            <h3>Gentle Mobility</h3>
+            <p class="class-meta"><time datetime="09:00">9:00am</time> · <time datetime="PT45M">45 min</time> · Coach Aroha</p>
+            <p class="class-level">Level: Beginner-friendly</p>
+            <p>A relaxed, longer stretch session. A good first class if you are nervous about starting.</p>
+          </li>
+          <li class="class-card" data-tags="strength beginner">
+            <h3>Strength Foundations</h3>
+            <p class="class-meta"><time datetime="10:30">10:30am</time> · <time datetime="PT60M">60 min</time> · Coach Ben</p>
+            <p class="class-level">Level: Beginner-friendly</p>
+            <p>A full-body strength session that builds on the basics from Intro to Lifting.</p>
+          </li>
+        </ul>
+      </section>
+    </div>
+  </main>
+
+
+  <footer class="site-footer">
+    <nav aria-label="Footer">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="classes.html">Classes</a></li>
+        <li><a href="membership.html">Membership</a></li>
+        <li><a href="join.html">Book a free trial</a></li>
+      </ul>
+    </nav>
+    <address>
+      Extreme Fitness Gym, 12 Example Street, Your Town<br>
+      Phone: <a href="tel:+6400000000">00 000 0000</a><br>
+      Email: <a href="mailto:hello@extremefitnessgym.example">hello@extremefitnessgym.example</a>
+    </address>
+    <p><small>Extreme Fitness Gym copyright © 2026 </small></p>
+  </footer>
+</body>
+
+</html>
