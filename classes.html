@@ -4,13 +4,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Class timetable | Fitness Extreme Gym</title>
+    <title>Class timetable | Extreme Fitness Gym</title>
     <meta name="description"
         content="Weekly class timetable at Extreme Fitness Gym. Filter by beginner-friendly, strength, cardio and mobility classes.">
     <link rel="icon" href="assets/images/favicon.svg" type="image/svg+xml">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Archivo:wght,wght@62..125,400..900&display=swap"
+    <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&display=optional"
         rel="stylesheet">
     <link rel="stylesheet" href="css/styles.css">
     <script src="js/script.js" defer></script>
@@ -48,7 +48,7 @@
         <button type="button" data-filter="cardio" aria-pressed="false">Cardio</button>
         <button type="button" data-filter="mobility" aria-pressed="false">Mobility</button>
       </div>
-      <p id="filter-status" aria-live="polite"></p>
+      <p id="filter-status" aria-live="polite" aria-atomic="true"></p>
     </div>
 
     <div class="timetable">
