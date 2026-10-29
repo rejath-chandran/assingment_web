@@ -1,60 +1,77 @@
+// The CSS only collapses the mobile menu when this class is present, so the
+// navigation stays usable if the script fails to load.
 document.documentElement.classList.add('js');
 
+function isExpanded(button) {
+  return button.getAttribute('aria-expanded') === 'true';
+}
 
-const menuButton = document.querySelector('.menu-toggle');
-const mainNav = document.querySelector('#main-nav');
+function setExpanded(button, expanded) {
+  button.setAttribute('aria-expanded', String(expanded));
+}
 
-if (menuButton && mainNav) {
+// Returns YYYY-MM-DD, the format <input type="date"> uses. Built from local
+// time because toISOString() uses UTC, which can be a different day here.
+function toDateInputValue(date) {
+  const month = String(date.getMonth() + 1).padStart(2, '0');
+  const day = String(date.getDate()).padStart(2, '0');
+  return date.getFullYear() + '-' + month + '-' + day;
+}
 
-  menuButton.hidden = false;
-  function setMenuOpen(isOpen) {
-    menuButton.setAttribute('aria-expanded', String(isOpen));
+function setUpMenu() {
+  const menuButton = document.querySelector('.menu-toggle');
+  const mainNav = document.querySelector('#main-nav');
+
+  if (!menuButton || !mainNav) {
+    return;
   }
 
+  menuButton.hidden = false;
+
   menuButton.addEventListener('click', function () {
-    const isOpen = menuButton.getAttribute('aria-expanded') === 'true';
-    setMenuOpen(!isOpen);
+    setExpanded(menuButton, !isExpanded(menuButton));
   });
 
-
   document.addEventListener('keydown', function (event) {
-    if (event.key === 'Escape' && menuButton.getAttribute('aria-expanded') === 'true') {
-      setMenuOpen(false);
+    if (event.key === 'Escape' && isExpanded(menuButton)) {
+      setExpanded(menuButton, false);
       menuButton.focus();
     }
   });
 }
 
+function setUpClassFilter() {
+  const classFilter = document.querySelector('#class-filter');
 
+  if (!classFilter) {
+    return;
+  }
 
-const classFilter = document.querySelector('#class-filter');
-
-if (classFilter) {
   const filterButtons = classFilter.querySelectorAll('button[data-filter]');
   const filterStatus = document.querySelector('#filter-status');
   const classCards = document.querySelectorAll('.class-card');
   const daySections = document.querySelectorAll('.day');
 
-  function applyFilter(filter) {
+  function showClassesTagged(tag) {
     let shownCount = 0;
 
     classCards.forEach(function (card) {
-      const tags = card.dataset.tags.split(' ');
-      const matches = filter === 'all' || tags.includes(filter);
-      card.hidden = !matches;
-      if (matches) {
+      const cardTags = card.dataset.tags.split(' ');
+      const isMatch = tag === 'all' || cardTags.includes(tag);
+      card.hidden = !isMatch;
+      if (isMatch) {
         shownCount++;
       }
     });
 
-    daySections.forEach(function (day) {
-      const visibleCards = day.querySelectorAll('.class-card:not([hidden])');
-      day.hidden = visibleCards.length === 0;
+    // Hide a whole day when none of its classes match, so no empty
+    // day headings are left on the page.
+    daySections.forEach(function (daySection) {
+      daySection.hidden = daySection.querySelector('.class-card:not([hidden])') === null;
     });
 
-
     filterButtons.forEach(function (button) {
-      button.setAttribute('aria-pressed', String(button.dataset.filter === filter));
+      button.setAttribute('aria-pressed', String(button.dataset.filter === tag));
     });
 
     filterStatus.textContent = 'Showing ' + shownCount + ' of ' + classCards.length + ' classes.';
@@ -62,39 +79,53 @@ if (classFilter) {
 
   filterButtons.forEach(function (button) {
     button.addEventListener('click', function () {
-      applyFilter(button.dataset.filter);
+      showClassesTagged(button.dataset.filter);
     });
   });
 
+  showClassesTagged('all');
 
-  applyFilter('all');
+  // The buttons do nothing without JavaScript, so the HTML starts them hidden.
   classFilter.hidden = false;
 }
 
+// Answers are visible in the HTML and only collapsed here, so they can still
+// be read if the script doesn't run.
+function setUpFaq() {
+  document.querySelectorAll('.faq-item').forEach(function (item) {
+    const heading = item.querySelector('h3');
+    const answer = item.querySelector('.faq-answer');
 
+    const toggle = document.createElement('button');
+    toggle.type = 'button';
+    toggle.className = 'faq-toggle';
+    toggle.textContent = heading.textContent;
+    setExpanded(toggle, false);
+    toggle.setAttribute('aria-controls', answer.id);
 
-const faqItems = document.querySelectorAll('.faq-item');
+    // The button goes inside the <h3> rather than replacing it, so screen
+    // reader users can still jump between questions by heading.
+    heading.textContent = '';
+    heading.appendChild(toggle);
+    answer.hidden = true;
 
-faqItems.forEach(function (item) {
-  const heading = item.querySelector('h3');
-  const answer = item.querySelector('.faq-answer');
-
-
-  const button = document.createElement('button');
-  button.type = 'button';
-  button.className = 'faq-toggle';
-  button.textContent = heading.textContent;
-  button.setAttribute('aria-expanded', 'false');
-  button.setAttribute('aria-controls', answer.id);
-
-  heading.textContent = '';
-  heading.appendChild(button);
-
-  answer.hidden = true;
-
-  button.addEventListener('click', function () {
-    const isOpen = button.getAttribute('aria-expanded') === 'true';
-    button.setAttribute('aria-expanded', String(!isOpen));
-    answer.hidden = isOpen;
+    toggle.addEventListener('click', function () {
+      const wasOpen = isExpanded(toggle);
+      setExpanded(toggle, !wasOpen);
+      answer.hidden = wasOpen;
+    });
   });
-});
+}
+
+function setUpTrialDateLimit() {
+  const dateInput = document.querySelector('#date');
+
+  if (dateInput) {
+    dateInput.min = toDateInputValue(new Date());
+  }
+}
+
+setUpMenu();
+setUpClassFilter();
+setUpFaq();
+setUpTrialDateLimit();

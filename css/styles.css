@@ -1,13 +1,13 @@
 :root {
-  --color-bg: #0E0F0F;            
-  --color-surface: #181919;       
-  --color-surface-2: #202121;     
-  --color-line: #2E2F2F;          
-  --color-text: #F2F2EC;          
-  --color-muted: #ABABA3;         
-  --color-accent: #D9F94A;        
-  --color-on-accent: #0E0F0F;     
-  --color-input-border: #7A7A73;  
+  --color-bg: #0E0F0F;
+  --color-surface: #181919;
+  --color-surface-2: #202121;
+  --color-line: #2E2F2F;
+  --color-text: #F2F2EC;
+  --color-muted: #ABABA3;
+  --color-accent: #D9F94A;
+  --color-on-accent: #0E0F0F;
+  --color-input-border: #7A7A73;
   --color-error: #FF7A6B;
 
   --font-body: "Archivo", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
@@ -23,12 +23,6 @@
 
   color-scheme: dark;
 }
-
-
-
-
-
-
 
 *,
 *::before,
@@ -51,6 +45,9 @@ img {
   height: auto;
 }
 
+/* script.js hides filtered classes and closed FAQ answers with the hidden
+   attribute. The browser's own [hidden] style loses to any display rule
+   in this file, so !important makes sure hidden elements stay hidden. */
 [hidden] {
   display: none !important;
 }
@@ -85,7 +82,6 @@ ol {
   margin: 0 0 var(--space-s);
 }
 
-
 p {
   max-width: 65ch;
 }
@@ -102,7 +98,6 @@ a:hover {
 strong {
   font-weight: 800;
 }
-
 
 :focus-visible {
   outline: 3px solid var(--color-accent);
@@ -126,6 +121,9 @@ strong {
   transform: translateY(0);
 }
 
+/* Centres content at --max-width on wide screens while the header and footer
+   backgrounds still run edge to edge. On narrow screens, max() keeps at
+   least --space-s of padding. */
 .site-header,
 main,
 .site-footer {
@@ -141,6 +139,7 @@ main,
   padding-block: var(--space-s);
   border-bottom: 1px solid var(--color-line);
 }
+
 .logo {
   display: inline-flex;
   align-items: center;
@@ -174,6 +173,7 @@ main,
   padding: 0;
   list-style: none;
 }
+
 .main-nav a {
   display: inline-block;
   padding-block: var(--space-xs);
@@ -215,6 +215,8 @@ main,
   border-color: var(--color-text);
 }
 
+/* The menu only collapses when script.js has added the .js class, so the
+   links stay visible if JavaScript is off. */
 .js .main-nav {
   display: none;
   flex-basis: 100%;
@@ -254,6 +256,7 @@ main > div {
 .cta-band :focus-visible {
   outline-color: var(--color-on-accent);
 }
+
 .button {
   display: inline-block;
   min-height: 2.75rem;
@@ -275,7 +278,6 @@ main > div {
   background-color: var(--color-text);
 }
 
-
 .cta-band .button {
   background-color: var(--color-on-accent);
   color: var(--color-text);
@@ -284,6 +286,7 @@ main > div {
 .cta-band .button:hover {
   background-color: var(--color-surface-2);
 }
+
 .card-list,
 .plan-list,
 .class-list {
@@ -303,7 +306,6 @@ main > div {
   background-color: var(--color-surface);
 }
 
-
 .card {
   border-top: 3px solid var(--color-accent);
 }
@@ -314,14 +316,11 @@ main > div {
   color: var(--color-muted);
 }
 
-
 .card > :last-child,
 .plan > :last-child,
 .class-card > :last-child {
   margin-bottom: 0;
 }
-
-
 
 .hero {
   display: grid;
@@ -333,7 +332,6 @@ main > div {
 .hero-text > :last-child {
   margin-bottom: 0;
 }
-
 
 .hero-image {
   width: 100%;
@@ -348,11 +346,9 @@ main > div {
   line-height: 0.95;
 }
 
-
 .nowrap {
   white-space: nowrap;
 }
-
 
 .accent {
   display: block;
@@ -426,7 +422,6 @@ main > div {
   border-color: var(--color-text);
 }
 
-
 .filter-buttons button[aria-pressed="true"] {
   border-color: transparent;
   background-color: var(--color-accent);
@@ -467,8 +462,6 @@ main > div {
   letter-spacing: 0.06em;
   text-transform: uppercase;
 }
-
-
 
 .plan {
   display: flex;
@@ -530,7 +523,6 @@ main > div {
   color: var(--color-muted);
 }
 
-
 .faq-toggle {
   display: flex;
   align-items: center;
@@ -553,7 +545,6 @@ main > div {
   color: var(--color-accent);
 }
 
-
 .faq-toggle::after {
   content: "";
   flex-shrink: 0;
@@ -572,8 +563,6 @@ main > div {
 .faq-answer > :last-child {
   margin-bottom: 0;
 }
-
-
 
 .steps {
   padding-left: 1.5rem;
@@ -635,7 +624,6 @@ textarea {
   resize: vertical;
 }
 
-
 .choice {
   display: flex;
   align-items: flex-start;
@@ -663,9 +651,6 @@ textarea {
 .trial-form .button {
   justify-self: start;
 }
-
-
-
 
 .site-footer {
   margin-top: var(--space-xl);
@@ -729,7 +714,6 @@ textarea {
   }
 }
 
-
 @media (min-width: 52em) {
   .menu-toggle {
     display: none;
@@ -744,15 +728,6 @@ textarea {
     flex-direction: row;
   }
 }
-
-
-
-
-
-
-
-
-
 
 @media (min-width: 56em) {
   .card-list,
@@ -774,12 +749,10 @@ textarea {
     aspect-ratio: 1 / 1;
   }
 
-  
   .hero h1 {
     font-size: clamp(2.5rem, 0.5rem + 4.5vw, 4.75rem);
   }
 }
-
 
 @media (min-width: 64em) {
   main {
@@ -790,7 +763,9 @@ textarea {
     grid-template-columns: repeat(3, 1fr);
   }
 
-
+  /* The HTML keeps "what happens on your first visit" before the form, so
+     it reads first on phones. On wide screens the grid moves the form to
+     the left without changing the source order. */
   .join-layout {
     grid-template-columns: 2fr 1fr;
     grid-template-areas:
